@@ -1,6 +1,15 @@
-__Character__
+# Some sort of RPG game api
 
-```
-name           - Character
-location       - x, y coordinates
-```
+I'm messing around with making an MMORPG that would require the players to be able to program. The API for controling the game would be well-documented, well-formed, and completely open. Instead of fighting hackers, this game would encourage and require them. The better you are at coding, the better you are at the game. This document and repo is just a place to organize my thoughts. I don't even know why I'm putting it on github.
+
+## Casting Spells
+
+So, I've always thought it'd be cool if game made it to where you had to make and discover your own spells. Since I read Harry Potter, I always thought of magic as programming. They talked about Dumbledor and Voldemort and Snape creating their own spells. I saw analogs to programming. So, obviously you wouldn't want people to be able to do anything. The effects should fall within a range of acceptable outcomes. I'm not totally sure what those outcomes would be, but I think I have an idea for "casting" these spells.
+
+Since we're going with the idea that you pretty much have to program solutions to a lot of your problems, I think that having to program spells to make them work would be awesome. So you're actually trying to figure the spell out, which would actually just be some sort of programming challenge. We would have to make it so the user could make an algorithm that would have to be run everytime they want to cast that particular spell. So it doesn't suffice to just send something like ```POST /spells { type: "fireball" }``` or something. It needs to be something that cannot be pre-computed. The more powerful the spell, more computationally expensive it should be.
+
+I propose that we give each player a unique spell token that they can consume to cast any spell they would like. When their spell cooldown has finished, they get a new token. The token would be a required argument to the spell they're trying to cast. The way they would cast a spell is by sending us a complex string of digits that could be translated on our end to something correlating to our spectrum of spell possibilities. Their spells would have to match up with their current spell token, so they couldn't just send the same input every time to cast it. It'd be nice if we made it to where most people would come up with very inefficient algorithms, and make the dataset large, so it actually does take a lot of work to cast the spell.
+
+I imagine that there would be some sort of syntax when decoded on our end. Something that would explain what element the spell is using, is it a projectile, is it area of effect, does it inflict damage overtime, does it heal, and so on. But the string generated that creates that code would have to be made and decoded with a spell token, ensuring that the player has to run their own spell algorithms each time.
+
+They could even tweak their algorithms for special effects. I assume they'll make their own functions that will cast a spell. Depending on the circumstances, they might want to make the range of their spell higher for a tradeoff in damage.
